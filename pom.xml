@@ -15,6 +15,7 @@
 <modules>
   <module>qiding-storm-local</module>
     <module>qiding-storm-reliable</module>
+    <module>qiding-storm-online</module>
 </modules>
 
   <properties>
