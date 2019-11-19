@@ -18,18 +18,16 @@ public class TopologyMain
         TopologyBuilder  topologyBuilder=new TopologyBuilder();
 
         //设置数据源
-        topologyBuilder.setSpout("mySpout",new MySpout(),1);
+        topologyBuilder.setSpout("mySpout",new MySpout(),2);
         //分割句子
-        topologyBuilder.setBolt("mySplit",new MySplitBolt(),1)
-                .shuffleGrouping("mySpout");
+        topologyBuilder.setBolt("mySplit",new MySplitBolt(),2).setNumTasks(4).shuffleGrouping("mySpout");
 
         //对单词累加
-        topologyBuilder.setBolt("myCount",new MyCountBolt(),1)
-                .fieldsGrouping("mySplit",new Fields("word"));
+        topologyBuilder.setBolt("myCount",new MyCountBolt(),3).setNumTasks(3).fieldsGrouping("mySplit",new Fields("word"));
 
         //配置信息
         Config config=new Config();
-        config.setNumWorkers(3);
+        //config.setNumWorkers(4);
 
         //本地执行
 //        LocalCluster cluster=new LocalCluster();

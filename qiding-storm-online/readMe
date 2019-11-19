@@ -1,0 +1,23 @@
+1.一个线程需要执行多个任务数
+      task/parallelismHint
+2.每个woker执行的线程数
+      parallelismHint/numberworks
+3.通过supervisor.slots.ports设置 每个jvm的work的数量
+
+4.分组策略
+   Shuffle Grouping 随机派发tuple，保证每个bolt中的task接收到相同的tuple
+   Fields Grouping 同样的字段，会被分配到相同的Bolt的task中
+   All Grouping 所有的bots都能收到相同的数据
+   Global Grouping 把tuple分配到taskid最低的task
+
+5.可靠性
+   ack+fail实现一致处理
+6.消息追踪
+   ackId
+7.DRPC 的使用过程
+
+8.事务使用
+
+9.各种集成
+
+10.Apache Storm Trident
